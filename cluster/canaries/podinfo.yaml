@@ -24,6 +24,13 @@ spec:
         threshold: 500
         interval: 1m
     webhooks:
+      - name: "helm test"
+        type: pre-rollout
+        url: http://helm-tester.prod/
+        timeout: 2m
+        metadata:
+          type: "helmv3"
+          cmd: "test run podinfo --cleanup"
       - name: load-test
         url: http://load-tester.prod/
         metadata:
