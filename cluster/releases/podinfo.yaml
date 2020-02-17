@@ -5,13 +5,13 @@ metadata:
   name: podinfo
   namespace: prod
   annotations:
-    fluxcd.io/ignore: "true"
-    fluxcd.io/automated: "false"
+    fluxcd.io/ignore: "false"
+    fluxcd.io/automated: "true"
     fluxcd.io/tag.chart-image: semver:~3.0
 spec:
   releaseName: podinfo
   chart:
-    git: git@github.com:stefanprodan/gitops-helm-workshop
+    git: git@github.com:bjowczarek/gitops-helm-workshop
     ref: master
     path: cluster/charts/podinfo
   values:
@@ -31,4 +31,4 @@ spec:
           proxy_hide_header l5d-server-id;
       path: /
       hosts:
-      - 35.198.97.122.nip.io
+      - af0eead46518211eaada00658b950fa4-2001348682.eu-west-1.elb.amazonaws.com
