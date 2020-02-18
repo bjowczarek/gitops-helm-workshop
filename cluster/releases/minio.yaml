@@ -1,0 +1,29 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: minio
+  namespace: gitlab-runner
+  annotations:
+    fluxcd.io/ignore: "true"
+spec:
+  releaseName: gitlab-runner
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com
+    name: minio
+    version: 5.0.11
+  valuesFrom:
+  - configMapKeyRef:
+      name: minio-secrets
+      key: secretKey
+  values:
+    accessKey: "minio"
+    persistence:
+      existingClaim: "minio-pv-claim"
+    defaultBucket:
+      enabled: true
+      ## If enabled, must be a string with length > 0
+      name: "gitlab-runner"
+      ## Can be one of none|download|upload|public
+      policy: none
+      ## Purge if bucket exists already
+      purge: false

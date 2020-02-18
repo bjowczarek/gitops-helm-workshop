@@ -1,0 +1,40 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: gitlab-runner
+  namespace: gitlab-runner
+  annotations:
+    fluxcd.io/ignore: "true"
+spec:
+  releaseName: gitlab-runner
+  chart:
+    repository: https://charts.gitlab.io
+    name: gitlab-runner
+    version: 0.13.1
+  valuesFrom:
+  - configMapKeyRef:
+      name: runner-secrets
+      key: runnerRegistrationToken
+  values:
+    gitlabUrl: https://gitlab.com/  
+    unregisterRunners: true
+    terminationGracePeriodSeconds: 3600
+    concurrent: 5
+    checkInterval: 20
+    rbac:
+      create: false
+      clusterWideAccess: false
+      serviceAccountName: gitlab-runner
+    metrics:
+      enabled: false
+    runners:
+      image: ubuntu:16.04
+      privileged: true
+      cache:
+        cacheType: s3
+        cacheShared: true
+        s3ServerAddress: "minio:9000"
+        s3BucketName: "gitlab-runner"
+        # s3BucketLocation:
+        s3CacheInsecure: true
+        secretName: minio
