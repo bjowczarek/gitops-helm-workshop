@@ -12,7 +12,7 @@ spec:
     name: minio
     version: 5.0.11
   valuesFrom:
-  - configMapKeyRef:
+  - secretKeyRef:
       name: minio-secrets
       key: secretKey
   values:

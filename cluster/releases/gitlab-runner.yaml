@@ -12,7 +12,7 @@ spec:
     name: gitlab-runner
     version: 0.13.1
   valuesFrom:
-  - configMapKeyRef:
+  - secretKeyRef:
       name: runner-secrets
       key: runnerRegistrationToken
   values:
