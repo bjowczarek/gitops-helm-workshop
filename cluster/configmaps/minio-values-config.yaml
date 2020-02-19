@@ -1,11 +1,12 @@
 apiVersion: v1
 data:
   values.yaml: |
+    existingSecret: "minio"
     persistence:
       existingClaim: "minio-pv-claim"
     defaultBucket:
       enabled: true
-      name: "gitlab-runner"
+      name: "cache"
       policy: none
       purge: false
 kind: ConfigMap

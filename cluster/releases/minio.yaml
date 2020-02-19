@@ -11,12 +11,7 @@ spec:
     repository: https://kubernetes-charts.storage.googleapis.com
     name: minio
     version: 5.0.11
-  values:
-    existingSecret: "minio"
-    persistence:
-      existingClaim: "minio-pv-claim"
-    defaultBucket:
-      enabled: true
-      name: "cache"
-      policy: none
-      purge: false
+  valuesFrom:
+    - configMapKeyRef:
+        name: minio-values-config
+        key: values.yaml
