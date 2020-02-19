@@ -13,8 +13,8 @@ spec:
     version: 0.13.1
   valuesFrom:
   - secretKeyRef:
-      name: runner-secrets
-      key: runnerRegistrationToken
+      name: runner-values-secrets
+      key: values.yaml
   values:
     gitlabUrl: https://gitlab.com/  
     unregisterRunners: true
