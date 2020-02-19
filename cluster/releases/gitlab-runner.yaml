@@ -4,7 +4,7 @@ metadata:
   name: gitlab-runner
   namespace: gitlab-runner
   annotations:
-    fluxcd.io/ignore: "true"
+    fluxcd.io/ignore: "false"
 spec:
   releaseName: gitlab-runner
   chart:
