@@ -1,0 +1,14 @@
+apiVersion: v1
+data:
+  values.yaml: |
+    persistence:
+      existingClaim: "minio-pv-claim"
+    defaultBucket:
+      enabled: true
+      name: "gitlab-runner"
+      policy: none
+      purge: false
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: minio-values-config

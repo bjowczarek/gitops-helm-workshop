@@ -15,13 +15,6 @@ spec:
   - secretKeyRef:
       name: minio-values-secrets
       key: values.yaml
-  values:
-    accessKey: "minio"
-    secretKey: "password123!"
-    persistence:
-      existingClaim: "minio-pv-claim"
-    defaultBucket:
-      enabled: true
-      name: "gitlab-runner"
-      policy: none
-      purge: false
+  - configMapKeyRef:
+        name: minio-values-config
+        key: values.yaml
