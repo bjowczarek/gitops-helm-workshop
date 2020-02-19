@@ -12,3 +12,4 @@ kind: ConfigMap
 metadata:
   creationTimestamp: null
   name: minio-values-config
+  namespace: gitlab-runner
