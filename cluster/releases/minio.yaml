@@ -16,6 +16,8 @@ spec:
       name: minio-values-secrets
       key: values.yaml
   values:
+    accessKey: "minio"
+    secretKey: "password123!"
     persistence:
       existingClaim: "minio-pv-claim"
     defaultBucket:
