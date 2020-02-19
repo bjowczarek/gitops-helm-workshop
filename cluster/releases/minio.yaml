@@ -18,3 +18,11 @@ spec:
   - configMapKeyRef:
         name: minio-values-config
         key: values.yaml
+  values:
+    persistence:
+      existingClaim: "minio-pv-claim"
+    defaultBucket:
+      enabled: true
+      name: "cache"
+      policy: none
+      purge: false
