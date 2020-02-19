@@ -85,7 +85,7 @@ metadata:
     app: minio
     chart: minio-5.0.6
     heritage: Helm
-    release: manual-minio
-  name: manual-minio
+    release: minio
+  name: minio
   namespace: gitlab-runner
 
