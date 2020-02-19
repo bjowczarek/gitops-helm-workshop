@@ -15,4 +15,12 @@ spec:
   - secretKeyRef:
       name: minio-values-secrets
       key: values.yaml
-      
+  values:
+    accessKey: "minio"
+    persistence:
+      existingClaim: "minio-pv-claim"
+    defaultBucket:
+      enabled: true
+      name: "gitlab-runner"
+      policy: none
+      purge: false
